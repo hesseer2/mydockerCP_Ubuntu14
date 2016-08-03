@@ -1,0 +1,33 @@
+# Docker commands to run the docker cellprofiler image with examples
+# Pull the docker image from Docker Hub ore create is from the Dockerfile
+#
+
+docker build -t hesseer2/dockercp .
+
+//docker run -i -t hesseer2/dockercp
+
+//docker run -i -t -v c:/data/:/tmp/data hesseer2/dockercp
+
+docker run -t hesseer2/dockercp
+ctrl-c
+
+docker ps
+
+docker rename d027d01a7aae dockercp
+
+docker cp c:/data/ dockerc2:/tmp/data/
+
+docker exec dockercp cellprofiler -c -p /tmp/data/ExampleHuman.cppipe -o /tmp/data/output/
+
+docker cp dockercp:/tmp/data/ c:/dataFromDocker2/
+
+docker exec dockercp rm -r /tmp/data/
+
+docker exec dockerc2 cellprofiler -c -p /data/ExampleTumor.cppipe -o /data/Output/ -i /data/ --file-list=/data/imagelist.txt
+
+
+
+
+
+
+
